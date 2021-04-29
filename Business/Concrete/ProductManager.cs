@@ -16,7 +16,7 @@ namespace Business.Concrete
         //Soyut sınıfdan bağlantı kurduk
         IProductDal _productDal;
 
-        public ProductManager(IProductDal productDal)
+        public ProductManager(IProductDal productDal)//birisi senden IProductDal isterse sen ona efProductDalı ver diyoruz.
         {
             _productDal = productDal;
         }
@@ -27,6 +27,7 @@ namespace Business.Concrete
             {
                 return new ErrorResult(Messages.ProductNameInvalid);
             }
+            //hep soyut sınıfları kullanıyorum.somut sınıflar zaten soyutlardan referans alıyor.
             //İş kodları
             _productDal.Add(product);
             return new SuccessResult(Messages.ProductAdded);
@@ -37,13 +38,13 @@ namespace Business.Concrete
         //Data Accesi çağırmam gerekiyor.
         public IDataResult<List<Product>>GetAll()
         {
-            if (DateTime.Now.Hour == 22)
+            if (DateTime.Now.Hour == 01)
             {
                 return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
             }
             //İş kodları
             //ProductDaldaki getall ı çağırdık.
-            return new DataResult<List<Product>>( _productDal.GetAll(),true);
+            return new DataResult<List<Product>>( _productDal.GetAll(),true,Messages.ProductsListed);
         }
 
         public IDataResult<List<Product>> GetAllByCategoryId(int id)
