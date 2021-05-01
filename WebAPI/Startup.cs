@@ -32,9 +32,9 @@ namespace WebAPI
             //biz bu mimariyi AutoFac e taþýyacaðýz.Net projelerinde kendi içinde  (Ioc)singletonu kendisi yapýyor ve altyapý sunuyor.
             //AOP yapýcaz o yüznde autofac kullanýyoruz çünkü bize aop imkaný sunuyor.aop bir metodun önünde sonunda hata verdiðinde çalýþan kod parçacýklarýný aop mimarisi ile yazýcaz.
             services.AddControllers();
-            services.AddSingleton<IProductService,ProductManager>();//bana arka planda bir referans oluþtur IoC container.Birisi senden consturactor da  IProductService isterse arka planda productmanager oluþtur onu ver demek.
-            services.AddSingleton<IProductDal, EfProductDal>();
-
+            //services.AddSingleton<IProductService,ProductManager>();//bana arka planda bir referans oluþtur IoC container.Birisi senden consturactor da  IProductService isterse arka planda productmanager oluþtur onu ver demek.
+            //services.AddSingleton<IProductDal, EfProductDal>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
