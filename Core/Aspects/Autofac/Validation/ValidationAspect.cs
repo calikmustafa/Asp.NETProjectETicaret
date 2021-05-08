@@ -9,7 +9,8 @@ using System.Text;
 
 namespace Core.Aspects.Autofac.Validation
 {
-    //
+    //metdoun başında sonunda ortasında hata verdiğinde çalışıcak method
+    //neresinde çalışmak istediğinde sen belirtirsin.
     public class ValidationAspect : MethodInterception
     {
         private Type _validatorType;

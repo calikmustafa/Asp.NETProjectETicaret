@@ -17,6 +17,7 @@ namespace Business.Abstract
         IDataResult<List<Product>>GetByUnitPrice(decimal min,decimal max);
         IDataResult<List<ProductDetailDto>>GetProductDetails();
         IResult Add(Product product);
+        IResult Update(Product product);
         //Tek başına bir ürün döndürüyor mesela ürüne tıkladın sayfadace sadece o ürünle ilgili bilgiler yer alıcak.
         IDataResult<Product> GetById(int productId);
 

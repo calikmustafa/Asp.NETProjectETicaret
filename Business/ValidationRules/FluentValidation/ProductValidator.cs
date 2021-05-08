@@ -7,6 +7,8 @@ using System.Text;
 namespace Business.ValidationRules.FluentValidation
 {
     //AbstractValidator<Product> biz burda product için validation işlemleri yapacağımızı belirtiyoruz.
+    //kullanıcının arayüzden girdiği ürünleri yapısal olarak uygun olup olmadığını kontrol ettiğimiz yerdir.
+    //business ise yönetimin verdiği iş kurallarını katmanında yazıyoruz.
     public class ProductValidator:AbstractValidator<Product>
     {
         //kurallar ctorun içerisine yazılır.
