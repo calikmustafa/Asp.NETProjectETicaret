@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.CCS;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
@@ -23,6 +24,8 @@ namespace Business.Concrete
         //Soyut sınıfdan bağlantı kurduk
         IProductDal _productDal;
         //productmanager IProductdal hariç ıCategorydalı enjekte edemez.
+
+
         //sana yönetim dediki kategory si 15 den fazla olamaz bir ürünün
         //burda ICategoryService kullanmamız gerekir
         ICategoryService _categoryService;
@@ -36,7 +39,15 @@ namespace Business.Concrete
 
 
 
-        //loglama yapılan operasyonların bir yerde kaydını tutmaktır.kim nerede ne zaman  bir ürün ekledi. 
+        //loglama yapılan operasyonların bir yerde kaydını tutmaktır.kim nerede ne zaman  bir ürün ekledi.
+        
+        //JWT(Json Web Token)
+        //Claim->admin veya product.add yazdığımız kelimeler hep claimdir.
+        //Hashing= kullanıcının şifresini ve kullanıcı adını veritabanın da açık açık tutmayız gizleriz buna hashing denir
+        //mesela 12341234 olsun şifre BDX3-5FDGHD algoritmaya göre bu şekilde veritabanın da tutarız gizli olması için
+        //Salting-> Kullanıcı aB1 girdi mesela biz bu parolayı güçlendirirz(aB112Bc) gibi buna salting deniz
+        
+        [SecuredOperation("admin,Product.add")]
         [ValidationAspect(typeof(ProductValidator))]//add metodunu doğrula productvalitora göre
         //add methodunu çalıştırmadan önce program bakıyorum yukarıya bir attribute var önce onu çalıştırıyor.
         public IResult Add(Product product)
@@ -65,7 +76,7 @@ namespace Business.Concrete
         //Data Accesi çağırmam gerekiyor.
         public IDataResult<List<Product>>GetAll()
         {
-            if (DateTime.Now.Hour == 01)
+            if (DateTime.Now.Hour == 1)
             {
                 return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
             }

@@ -7,6 +7,7 @@ using System.Text;
 
 namespace Core.Utilities.Interceptors
 {
+    //Interceptor araya girmek demek yani methodun başında sonunda nerede araya gireceğini belirticek
 
 
     public class AspectInterceptorSelector : IInterceptorSelector
