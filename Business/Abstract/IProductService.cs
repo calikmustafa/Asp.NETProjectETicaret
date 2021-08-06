@@ -21,5 +21,9 @@ namespace Business.Abstract
         //Tek başına bir ürün döndürüyor mesela ürüne tıkladın sayfadace sadece o ürünle ilgili bilgiler yer alıcak.
         IDataResult<Product> GetById(int productId);
 
+        //TRANSACTİONAL->ARDAKAŞIMA 10 TL PARA YOLLUCAM BENDEN BAKİYE DÜŞÜCEK ARKADAŞIMDAN ARTICAK
+        //BAKTIK HATA ÇIKTI İŞLEMİ GERİ ALMAMIZ GEREKİYOR BU İŞLEME DENİR.
+        IResult AddTransactionalTest(Product product);
+
     }
 }
